@@ -1,0 +1,156 @@
+#include<iostream>
+using namespace std;
+void call();
+bool output(int a,int OPTION[15][4],string answer[15],char alphabets[4]);
+void question(int i);
+void result(float total,float score);
+
+
+
+int main()
+{
+	string answer[15]={"C","B","B","B","C","A","A","B","C","D","B","C","B","A","B"};
+	char alphabets[4]={'A','B','C','D'};
+	int count=3,i=0;
+	bool store;
+	float per,score,total=0;
+	int OPTION[15][4]={{365,345,366,355},{5,6,7,8},{1990,1979,1890,1920},{1928,1947,1990,1948},{1911,1930,2001,1991},
+	{9,12,3,5},{6,2,1,9},{10457,525600,8909,8765},{2005,2006,2007,2008},{7,8,9,6},{120,118,190,290},{1944,1940,1945,1990},
+	{2020,2021,2022,2023},{11,12,13,14},{1,2,3,4}};
+		cout<<"      QUIZ ATTEMPT     \n";
+		cout<<"      ONLY "<<count<<" LIVES\n";
+		while(i<15)
+    	{
+    	total++;
+	    call();
+	    question(i);
+	    store=output(i,OPTION,answer,alphabets);
+		if(store)
+		   {
+		score++;
+		cout<<"CORRECT!"<<endl;
+	    }
+        else
+            {
+       	count--;
+	     cout<<"WRONG!\n";
+	     cout<<"CORRECT:"<<answer[i]<<endl;
+	     call();
+	    cout<<"    REMAINING LIVES:"<<count;
+        }
+       cout<<endl;
+	   i++;
+	  
+	 	if(count==0)
+		 {
+		 cout<<"    FAILED\n";
+		 break;
+	   }
+	}
+      call();
+      result(total,score);
+      if(count>0)
+	  {
+      cout<<"    YOU PASS\n";
+    }
+      call();
+return 0;
+}
+	   
+	   
+
+bool output(int a,int OPTION[15][4],string answer[15],char alphabets[4])
+{
+	string ans;
+		for(int b=0;b<4;b++)
+		     {
+			cout<<alphabets[b]<<"."<<OPTION[a][b]<<"   ";
+		   }
+		    cout<<endl;
+			do
+				{
+				cout<<"   CHOOSE FROM A,B,C,D\n";
+				cin>>ans;
+		       }
+		 		while(!(ans=="A"||ans=="B"||ans=="C"||ans=="D"));
+
+		   bool result=(ans==answer[a])?true:false;
+		   
+		         return result;                      
+
+}
+	
+	
+      
+
+void result(float total,float score)
+{
+   cout<<"        YOUR SCORE    \n";
+   cout<<"   TOTAL QUESTIONS:"<<total<<endl;
+   cout<<"   CORRECT QUESTIONS:"<<score<<endl;
+   float per=(score*100)/total;
+   cout<<"    SCORE IS "<<per<<"%"<<endl;	
+}
+
+
+
+void call()
+{
+
+	cout<<"**********************************"<<endl;
+	cout<<endl;
+	cout<<"**********************************"<<endl;
+
+}
+
+
+
+
+
+
+
+void question(int i)
+{
+	if(i==0)
+	   {
+	cout<<"        LEVEL 1 - EASY\n";
+	cout<<"How many days are there in a leap year?\n";
+     }
+	else if(i==1)
+	cout<<"How many sides are there in a hexagon?\n";
+	else if(i==2)
+	cout<<"When was C++ invented?\n";
+	else if(i==3)
+	cout<<"When Pakistan came into existence?\n";
+	else if(i==4)
+	  {
+	cout<<"        LEVEL 2 - MEDIUM\n";
+	cout<<"When did the incident 9/11 take place?\n";
+    }
+	else if(i==5)
+	cout<<"Nanga Parbat's rank among the highest mountains?\n";
+	else if(i==6)
+	cout<<"How many faces are there in a cube?\n";
+	else if(i==7)
+	cout<<"Total minutes in a year?\n";
+	else if(i==8)
+	cout<<"When was the 1st iPHONE released?\n";
+	else if(i==9)
+	cout<<"How many zeroes are there in 1 million?\n";
+	else if(i==10)
+		{
+	cout<<"        LEVEL 3 - HARD\n";
+	cout<<"Total elements in the Periodic Table?\n";
+	}
+	else if(i==11)
+	cout<<"When was World War 2 ended?\n";
+	else if(i==12)
+	cout<<"SQUID GAME was the most streamed show in:\n";
+	else if(i==13)
+	cout<<"Total colours in South Africa's Flag?\n";
+	else
+	 {
+	if(i==14)
+	cout<<"Which number is the only prime even?\n";
+    }
+}
